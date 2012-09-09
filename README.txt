@@ -1,19 +1,19 @@
 Project #1: Collatz
 Date: Wed, 12 Sep 2012
 
-Course Name:
-Unique:
+Course Name: CS371P
+Unique: 53060
 
-First Name:
-Last Name:
-EID:
-E-mail:
-Estimated number of hours:
-Actual    number of hours:
+First Name: Zesen
+Last Name: Huang
+EID: zh2754
+E-mail: zesen1221@gmail.com
+Estimated number of hours: just getting started
+Actual    number of hours: just getting started
 
-Turnin CS Username:
-GitHub ID:
-GitHub Repository Name:
+Turnin CS Username: hzesen
+GitHub ID: hzesen1221
+GitHub Repository Name: cs371p-collatz
 
 Comments:
 
