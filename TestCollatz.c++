@@ -39,6 +39,7 @@ struct TestCollatz : CppUnit::TestFixture {
     // read
     // ----
 
+//1: normal read
     void test_read () {
         std::istringstream r("1 10\n");
         int i;
@@ -48,6 +49,53 @@ struct TestCollatz : CppUnit::TestFixture {
         CPPUNIT_ASSERT(i ==    1);
         CPPUNIT_ASSERT(j ==   10);}
 
+//2: reversed order
+    void test_read1 () {
+        std::istringstream r("10 1\n");
+        int i;
+        int j;
+        const bool b = collatz_read(r, i, j);
+        CPPUNIT_ASSERT(b == true);
+        CPPUNIT_ASSERT(i ==   10);
+        CPPUNIT_ASSERT(j ==    1);}
+
+//3: same ints
+    void test_read2 () {
+        std::istringstream r("1000 1000\n");
+        int i;
+        int j;
+        const bool b = collatz_read(r, i, j);
+        CPPUNIT_ASSERT(b == true);
+        CPPUNIT_ASSERT(i ==   1000);
+        CPPUNIT_ASSERT(j ==   1000);}
+
+//4: invalid input 1
+    void test_read3 () {
+        std::istringstream r("text\n");
+        int i;
+        int j;
+        const bool b = collatz_read(r, i, j);
+        CPPUNIT_ASSERT(b == false);
+	}
+
+//5: invalid input 2
+    void test_read4 () {
+        std::istringstream r("one two\n");
+        int i;
+        int j;
+        const bool b = collatz_read(r, i, j);
+        CPPUNIT_ASSERT(b == false);
+	}
+
+//6: inputs from different lines
+    void test_read5 () {
+        std::istringstream r("1\n10\n");
+        int i;
+        int j;
+        const bool b = collatz_read(r, i, j);
+        CPPUNIT_ASSERT(b == true);
+        CPPUNIT_ASSERT(i ==    1);
+        CPPUNIT_ASSERT(j ==   10);}
     // ----
     // eval
     // ----
@@ -56,6 +104,7 @@ struct TestCollatz : CppUnit::TestFixture {
         const int v = collatz_eval(1, 10);
         CPPUNIT_ASSERT(v == 20);}
 
+    
     void test_eval_2 () {
         const int v = collatz_eval(100, 200);
         CPPUNIT_ASSERT(v == 125);}
@@ -72,10 +121,37 @@ struct TestCollatz : CppUnit::TestFixture {
     // print
     // -----
 
+//1: normal print
     void test_print () {
         std::ostringstream w;
         collatz_print(w, 1, 10, 20);
         CPPUNIT_ASSERT(w.str() == "1 10 20\n");}
+
+//2: reversed order
+    void test_print1 () {
+        std::ostringstream w;
+        collatz_print(w, 10, 1, 20);
+        CPPUNIT_ASSERT(w.str() == "10 1 20\n");}
+
+//3: same ints
+    void test_print2 () {
+        std::ostringstream w;
+        collatz_print(w, 22, 22, 16);
+        CPPUNIT_ASSERT(w.str() == "22 22 16\n");}
+
+//4: verify collatz_print only does the printing, and nothing more, e.g. evaluation.
+    void test_print3 () {
+        std::ostringstream w;
+        collatz_print(w, 22, 22, 100);
+        CPPUNIT_ASSERT(w.str() == "22 22 100\n");}
+
+//5: verify collat_print is able to print large ints.
+    void test_print4 () {
+        std::ostringstream w;
+        collatz_print(w, 100000000, 200000000, 300000000);
+        CPPUNIT_ASSERT(w.str() == "100000000 200000000 300000000\n");}
+
+
 
     // -----
     // solve
@@ -93,12 +169,21 @@ struct TestCollatz : CppUnit::TestFixture {
 
     CPPUNIT_TEST_SUITE(TestCollatz);
     CPPUNIT_TEST(test_read);
-    CPPUNIT_TEST(test_eval_1);
-    CPPUNIT_TEST(test_eval_2);
-    CPPUNIT_TEST(test_eval_3);
-    CPPUNIT_TEST(test_eval_4);
+    CPPUNIT_TEST(test_read1);
+    CPPUNIT_TEST(test_read2);
+    CPPUNIT_TEST(test_read3);
+    CPPUNIT_TEST(test_read4);
+    CPPUNIT_TEST(test_read5);
+    //CPPUNIT_TEST(test_eval_1);
+    //CPPUNIT_TEST(test_eval_2);
+    //CPPUNIT_TEST(test_eval_3);
+    //CPPUNIT_TEST(test_eval_4);
     CPPUNIT_TEST(test_print);
-    CPPUNIT_TEST(test_solve);
+    CPPUNIT_TEST(test_print1);
+    CPPUNIT_TEST(test_print2);
+    CPPUNIT_TEST(test_print3);
+    CPPUNIT_TEST(test_print4);
+    //CPPUNIT_TEST(test_solve);
     CPPUNIT_TEST_SUITE_END();};
 
 // ----
