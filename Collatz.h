@@ -22,6 +22,17 @@
  * @param j an int by reference
  * @return true if that succeeds, false otherwise
  */
+
+int collatz_compute_cyc(int arg) {
+        int result = 1;
+        while (arg != 1) {
+                if (arg % 2 == 1) arg = arg * 3 + 1;
+                else arg /= 2;
+                result++;
+        }
+        return result;
+}
+
 bool collatz_read (std::istream& r, int& i, int& j) {
     r >> i;
     if (!r)
@@ -43,10 +54,16 @@ bool collatz_read (std::istream& r, int& i, int& j) {
 int collatz_eval (int i, int j) {
     assert(i > 0);
     assert(j > 0);
-    // <your code>
-    int v = 1;
-    assert(v > 0);
-    return v;}
+    /********** first version eval function **********/
+    int max_cycle = 0, c = (i <= j) ? i : j, max = (i > j) ? i : j;
+    for (; c <= max; c++) {
+	int cur_cyc = collatz_compute_cyc(c);
+	max_cycle = (max_cycle >= cur_cyc) ? max_cycle : cur_cyc;
+    } 
+    /*************************************************/     
+    assert(max_cycle > 0);
+    return max_cycle;}
+
 
 // -------------
 // collatz_print
