@@ -8,14 +8,14 @@ First Name: Zesen
 Last Name: Huang
 EID: zh2754
 E-mail: zesen1221@gmail.com
-Estimated number of hours: just getting started
-Actual    number of hours: just getting started
+Estimated number of hours: 5hrs
+Actual    number of hours: 10hrs
 
 Turnin CS Username: hzesen
 GitHub ID: hzesen1221
 GitHub Repository Name: cs371p-collatz
 
-Comments:
+Comments: spent some time getting familiar with github, but a great experience.
 
 ---------------
 Code of Conduct
