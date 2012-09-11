@@ -117,6 +117,21 @@ struct TestCollatz : CppUnit::TestFixture {
         const int v = collatz_eval(900, 1000);
         CPPUNIT_ASSERT(v == 174);}
 
+//1: check reversed order.
+    void test_eval_5 () {
+        const int v = collatz_eval(1000, 900);
+        CPPUNIT_ASSERT(v == 174);}
+
+//2: check same value.
+    void test_eval_6 () {
+        const int v = collatz_eval(22, 22);
+        CPPUNIT_ASSERT(v == 16);}
+
+//3: check large range. 
+    void test_eval_7 () {
+        const int v = collatz_eval(1922, 674210);
+        CPPUNIT_ASSERT(v == 509);}
+ 
     // -----
     // print
     // -----
@@ -163,6 +178,27 @@ struct TestCollatz : CppUnit::TestFixture {
         collatz_solve(r, w);
         CPPUNIT_ASSERT(w.str() == "1 10 20\n100 200 125\n201 210 89\n900 1000 174\n");}
 
+//1: reversed order.
+    void test_solve1 () {
+        std::istringstream r("10 1\n200 100\n210 201\n1000 900\n");
+        std::ostringstream w;
+        collatz_solve(r, w);
+        CPPUNIT_ASSERT(w.str() == "10 1 20\n200 100 125\n210 201 89\n1000 900 174\n");}
+
+//2: same number.
+    void test_solve2 () {
+        std::istringstream r("1 1\n2 2\n5 5\n22 22\n");
+        std::ostringstream w;
+        collatz_solve(r, w);
+        CPPUNIT_ASSERT(w.str() == "1 1 1\n2 2 2\n5 5 6\n22 22 16\n");}
+
+//3: single line.
+    void test_solve3 () {
+        std::istringstream r("1 10\n");
+        std::ostringstream w;
+        collatz_solve(r, w);
+        CPPUNIT_ASSERT(w.str() == "1 10 20\n");}
+
     // -----
     // suite
     // -----
@@ -174,16 +210,22 @@ struct TestCollatz : CppUnit::TestFixture {
     CPPUNIT_TEST(test_read3);
     CPPUNIT_TEST(test_read4);
     CPPUNIT_TEST(test_read5);
-    //CPPUNIT_TEST(test_eval_1);
-    //CPPUNIT_TEST(test_eval_2);
-    //CPPUNIT_TEST(test_eval_3);
-    //CPPUNIT_TEST(test_eval_4);
+    CPPUNIT_TEST(test_eval_1);
+    CPPUNIT_TEST(test_eval_2);
+    CPPUNIT_TEST(test_eval_3);
+    CPPUNIT_TEST(test_eval_4);
+    CPPUNIT_TEST(test_eval_5);
+    CPPUNIT_TEST(test_eval_6);
+    CPPUNIT_TEST(test_eval_7);
     CPPUNIT_TEST(test_print);
     CPPUNIT_TEST(test_print1);
     CPPUNIT_TEST(test_print2);
     CPPUNIT_TEST(test_print3);
     CPPUNIT_TEST(test_print4);
-    //CPPUNIT_TEST(test_solve);
+    CPPUNIT_TEST(test_solve);
+    CPPUNIT_TEST(test_solve1);
+    CPPUNIT_TEST(test_solve2);
+    CPPUNIT_TEST(test_solve3);
     CPPUNIT_TEST_SUITE_END();};
 
 // ----

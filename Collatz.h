@@ -10,7 +10,8 @@
 
 #include <cassert>  // assert
 #include <iostream> // endl, istream, ostream
-
+const int SIZE = 1000001;
+long long cache[SIZE];
 // ------------
 // collatz_read
 // ------------
@@ -22,17 +23,37 @@
  * @param j an int by reference
  * @return true if that succeeds, false otherwise
  */
-
-int collatz_compute_cyc(int arg) {
-        int result = 1;
-        while (arg != 1) {
-                if (arg % 2 == 1) arg = arg * 3 + 1;
-                else arg /= 2;
-                result++;
-        }
-        return result;
+int collatz_compute_cyc(long long arg) {
+	//Case 1: arg = 1, simply return 1.
+	if (arg == 1) return 1;
+	//Case 2: arg <= 1,000,000, in cache, simply use cache.
+	if (arg < SIZE && cache[arg]) return cache[arg];
+	//Case 3: arg <= 1,000,000, NOT in cache.
+	if (arg < SIZE) {
+		if (arg & 1) cache[arg] = 2 + collatz_compute_cyc(arg + (arg >> 1) + 1); //if arg is odd.
+		else cache[arg] = 1 + collatz_compute_cyc(arg >> 1); //if arg is even.
+		return cache[arg];
+	}
+	//Case 4: arg > 1,000,000, NOT in cache, of course.
+	if (arg >= SIZE) {
+		if (arg & 1) return 2 + collatz_compute_cyc(arg + (arg >> 1) + 1); //if arg is odd.
+		else return 1 + collatz_compute_cyc(arg >> 1); //if arg is even.
+	}
+	return -1; //other cases indicate error.
 }
 
+// ------------
+// collatz_read
+// ------------
+
+
+/**
+ * reads two ints into i and j
+ * @param r a  std::istream
+ * @param i an int by reference
+ * @param j an int by reference
+ * @return true if that succeeds, false otherwise
+ */
 bool collatz_read (std::istream& r, int& i, int& j) {
     r >> i;
     if (!r)
@@ -56,8 +77,10 @@ int collatz_eval (int i, int j) {
     assert(j > 0);
     /********** first version eval function **********/
     int max_cycle = 0, c = (i <= j) ? i : j, max = (i > j) ? i : j;
+    c = (c < max / 2) ? (max / 2) : c;
+    int cur_cyc;
     for (; c <= max; c++) {
-	int cur_cyc = collatz_compute_cyc(c);
+	cur_cyc = collatz_compute_cyc(c);
 	max_cycle = (max_cycle >= cur_cyc) ? max_cycle : cur_cyc;
     } 
     /*************************************************/     
