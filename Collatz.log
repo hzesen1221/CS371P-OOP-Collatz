@@ -1,20 +1,47 @@
-initial commit:
- 		original codes committed.
+commit dd5254ccf73cd03263c9d36f659400edc8dcd96e
+Author: Zesen Huang <zesen1221@gmail.com>
+Date:   Tue Sep 11 19:04:32 2012 -0500
 
-initial README modified:
-		basic info about the project uploaded.
+    added Collatz.log and html/
 
-initial unit and acceptance tests pior to implementing eval():
-		read and print tests complete, eval and solve incomplete.
+commit 6eaca70232b3b2ac3bfa2f3715de2b90f85d8ade
+Author: Zesen Huang <zesen1221@gmail.com>
+Date:   Tue Sep 11 18:23:51 2012 -0500
 
-simplest eval done:
-		no-cache version of eval.
+    README.txt complete
 
-tests done, cache added:
-		cache version of eval. unit and acceptance tests complete.
+commit 30820ebc7db52b09a9f1b17016051613667a9b1f
+Author: Zesen Huang <zesen1221@gmail.com>
+Date:   Tue Sep 11 15:22:44 2012 -0500
 
-SphereCollazt.c++ added:
-		combine Collazt.h and RunCollazt.c++ together.
+    SphereCollatz.c++ added
 
-README.txt complete:
-		README.txt complete.
+commit e300b74280839b79005317baaaa8400dd43be87f
+Author: Zesen Huang <zesen1221@gmail.com>
+Date:   Tue Sep 11 14:09:32 2012 -0500
+
+    tests done, cache added.
+
+commit 9e44c26ea45319033383579e0a88de3c4d34ba36
+Author: Zesen Huang <zesen1221@gmail.com>
+Date:   Mon Sep 10 23:04:19 2012 -0500
+
+    simplest eval done
+
+commit 1a8418a1d6dcb54674b479f49c0994d1134932d7
+Author: Zesen Huang <zesen1221@gmail.com>
+Date:   Mon Sep 10 16:19:11 2012 -0500
+
+    initial unit and acceptance tests prior to implementing eval()
+
+commit 524f6d10b6a1039660f00389c6c51cc30db5ed55
+Author: Zesen Huang <zesen1221@gmail.com>
+Date:   Sat Sep 8 21:33:54 2012 -0500
+
+    initial README modified
+
+commit 8bee7a4c968d76fca5ff1e9bad3a433a6be23959
+Author: Zesen Huang <zesen1221@gmail.com>
+Date:   Sat Sep 8 20:55:03 2012 -0500
+
+    initial commit
