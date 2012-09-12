@@ -1,3 +1,9 @@
+commit 27f58fab24fca1f3d62deedc6bc043c261a75d52
+Author: Zesen Huang <zesen1221@gmail.com>
+Date:   Tue Sep 11 23:07:43 2012 -0500
+
+    change cache size
+
 commit 0a40a159fee661a2acd1a9473e76aeac37ca8563
 Author: Zesen Huang <zesen1221@gmail.com>
 Date:   Tue Sep 11 22:58:24 2012 -0500

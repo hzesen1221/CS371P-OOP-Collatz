@@ -28,6 +28,7 @@ long long cache[SIZE];
  * @return the cycle length of arg
  */
 int collatz_compute_cyc(long long arg) {
+	assert(arg > 0);
 	//Case 1: arg = 1, simply return 1.
 	if (arg == 1) return 1;
 	//Case 2: arg <= 1,000,000, in cache, simply use cache.
@@ -43,7 +44,7 @@ int collatz_compute_cyc(long long arg) {
 		if (arg & 1) return 2 + collatz_compute_cyc(arg + (arg >> 1) + 1); //if arg is odd.
 		else return 1 + collatz_compute_cyc(arg >> 1); //if arg is even.
 	}
-	return -1; //other cases indicate error.
+	return -1; //other cases indicate error (assertion in eval() will catch it).
 }
 
 // ------------
@@ -78,11 +79,12 @@ bool collatz_read (std::istream& r, int& i, int& j) {
 int collatz_eval (int i, int j) {
     assert(i > 0);
     assert(j > 0);
-    int max_cycle = 0, c = (i <= j) ? i : j, max = (i > j) ? i : j;
-    c = (c < max / 2) ? (max / 2) : c;
+    int max_cycle = 0, c = (i <= j) ? i : j, max = (i > j) ? i : j; //c: lower bound. max: upper bound.
+    c = (c < max / 2) ? (max / 2) : c; //only compute cycle length for (max/2) to (max).
     int cur_cyc;
     for (; c <= max; c++) {
 	cur_cyc = collatz_compute_cyc(c);
+	assert(cur_cyc > 0);
 	max_cycle = (max_cycle >= cur_cyc) ? max_cycle : cur_cyc;
     } 
     assert(max_cycle > 0);
