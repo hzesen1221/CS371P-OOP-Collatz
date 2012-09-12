@@ -1,3 +1,15 @@
+commit 0a40a159fee661a2acd1a9473e76aeac37ca8563
+Author: Zesen Huang <zesen1221@gmail.com>
+Date:   Tue Sep 11 22:58:24 2012 -0500
+
+    assertions added
+
+commit 4a19a567918ac30b3115c13c2b38b268e3b75b26
+Author: Zesen Huang <zesen1221@gmail.com>
+Date:   Tue Sep 11 22:50:20 2012 -0500
+
+    correct Collatz.log
+
 commit dd5254ccf73cd03263c9d36f659400edc8dcd96e
 Author: Zesen Huang <zesen1221@gmail.com>
 Date:   Tue Sep 11 19:04:32 2012 -0500
