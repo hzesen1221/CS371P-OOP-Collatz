@@ -1,0 +1,20 @@
+initial commit:
+ 		original codes committed.
+
+initial README modified:
+		basic info about the project uploaded.
+
+initial unit and acceptance tests pior to implementing eval():
+		read and print tests complete, eval and solve incomplete.
+
+simplest eval done:
+		no-cache version of eval.
+
+tests done, cache added:
+		cache version of eval. unit and acceptance tests complete.
+
+SphereCollazt.c++ added:
+		combine Collazt.h and RunCollazt.c++ together.
+
+README.txt complete:
+		README.txt complete.
